@@ -22,7 +22,7 @@ extension MaskInfo {
     @NSManaged public var address: String?
     @NSManaged public var adultCount: Int32
     @NSManaged public var childCount: Int32
-    @NSManaged public var updated: String?
+    @NSManaged public var updatedate: String?
     @NSManaged public var county: String?
     @NSManaged public var town: String?
     @NSManaged public var cunli: String?
