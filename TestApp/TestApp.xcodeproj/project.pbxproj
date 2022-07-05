@@ -17,6 +17,11 @@
 		8B0BE71D2871F0CD00064C5B /* TestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE71C2871F0CD00064C5B /* TestAppTests.swift */; };
 		8B0BE7272871F0CD00064C5B /* TestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE7262871F0CD00064C5B /* TestAppUITests.swift */; };
 		8B0BE7292871F0CD00064C5B /* TestAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE7282871F0CD00064C5B /* TestAppUITestsLaunchTests.swift */; };
+		8B0BE7362871F22800064C5B /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE7352871F22700064C5B /* NetworkController.swift */; };
+		8B0BE7382874253C00064C5B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE7372874253B00064C5B /* Model.swift */; };
+		8B0BE73A287431F400064C5B /* MaskInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE739287431F300064C5B /* MaskInfoTableViewCell.swift */; };
+		8B0BE73D28743BC200064C5B /* MaskInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE73B28743BC200064C5B /* MaskInfo+CoreDataClass.swift */; };
+		8B0BE73E28743BC200064C5B /* MaskInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE73C28743BC200064C5B /* MaskInfo+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		8B0BE7222871F0CD00064C5B /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0BE7262871F0CD00064C5B /* TestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppUITests.swift; sourceTree = "<group>"; };
 		8B0BE7282871F0CD00064C5B /* TestAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8B0BE7352871F22700064C5B /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		8B0BE7372874253B00064C5B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		8B0BE739287431F300064C5B /* MaskInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskInfoTableViewCell.swift; sourceTree = "<group>"; };
+		8B0BE73B28743BC200064C5B /* MaskInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8B0BE73C28743BC200064C5B /* MaskInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaskInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,8 @@
 		8B0BE6F62871F0C800064C5B = {
 			isa = PBXGroup;
 			children = (
+				8B0BE73B28743BC200064C5B /* MaskInfo+CoreDataClass.swift */,
+				8B0BE73C28743BC200064C5B /* MaskInfo+CoreDataProperties.swift */,
 				8B0BE7012871F0C900064C5B /* TestApp */,
 				8B0BE71B2871F0CD00064C5B /* TestAppTests */,
 				8B0BE7252871F0CD00064C5B /* TestAppUITests */,
@@ -104,6 +116,9 @@
 				8B0BE7022871F0C900064C5B /* AppDelegate.swift */,
 				8B0BE7042871F0C900064C5B /* SceneDelegate.swift */,
 				8B0BE7062871F0C900064C5B /* ViewController.swift */,
+				8B0BE739287431F300064C5B /* MaskInfoTableViewCell.swift */,
+				8B0BE7352871F22700064C5B /* NetworkController.swift */,
+				8B0BE7372874253B00064C5B /* Model.swift */,
 				8B0BE7082871F0C900064C5B /* Main.storyboard */,
 				8B0BE70E2871F0CC00064C5B /* Assets.xcassets */,
 				8B0BE7102871F0CC00064C5B /* LaunchScreen.storyboard */,
@@ -261,10 +276,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B0BE7362871F22800064C5B /* NetworkController.swift in Sources */,
 				8B0BE7072871F0C900064C5B /* ViewController.swift in Sources */,
 				8B0BE70D2871F0C900064C5B /* TestApp.xcdatamodeld in Sources */,
+				8B0BE73E28743BC200064C5B /* MaskInfo+CoreDataProperties.swift in Sources */,
+				8B0BE73D28743BC200064C5B /* MaskInfo+CoreDataClass.swift in Sources */,
+				8B0BE7382874253C00064C5B /* Model.swift in Sources */,
 				8B0BE7032871F0C900064C5B /* AppDelegate.swift in Sources */,
 				8B0BE7052871F0C900064C5B /* SceneDelegate.swift in Sources */,
+				8B0BE73A287431F400064C5B /* MaskInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
