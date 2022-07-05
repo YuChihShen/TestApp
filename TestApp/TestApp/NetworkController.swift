@@ -15,13 +15,34 @@ class NetworkController: NSObject {
     // API
     var dataTask : URLSessionDataTask?
     let maskURL = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json"
+    let sentenceURL = "https://tw.feature.appledaily.com/collection/dailyquote"
     // singleton
     static let sharedInstance = NetworkController()
     // MaskInfo List
     var maskInfoList:[MaskInfo] = []
+    // AreaList
+    var areaList:[String] = []
     // vc
     var vc:ViewController?
     
+    var isShouldRenewAreaList = true
+    func getＳentence(){
+        let url = URL(string: sentenceURL)!
+        
+        do{
+            //取得送出後資料的回傳值
+            let html = try String(contentsOf: url)
+            var htmlComponent = html.components(separatedBy: "rwdfix")
+            htmlComponent = htmlComponent[1].components(separatedBy: "p>")
+            htmlComponent = htmlComponent[2].components(separatedBy: "<br />")
+            htmlComponent[1].removeLast(2)
+            vc?.chSentence.text = htmlComponent[0]
+            vc?.enSentence.text = htmlComponent[1]
+            
+        }catch{
+            print(error)
+        }
+    }
     func getMaskInfo(){
         let url = URL(string: maskURL)!
         
@@ -58,7 +79,7 @@ class NetworkController: NSObject {
         }
         dataTask?.resume()
     }
-    
+    // 清空coredata
     private func cleanMaskInfo(){
         let request = NSFetchRequest<MaskInfo>(entityName: "MaskInfo")
         do{
@@ -70,7 +91,7 @@ class NetworkController: NSObject {
             fatalError("抓取錯誤:\(error)")
         }
     }
-    
+    // 搜尋資料
     private func searchMaskInfo(){
         maskInfoList.removeAll()
         let request = NSFetchRequest<MaskInfo>(entityName: "MaskInfo")
@@ -78,17 +99,38 @@ class NetworkController: NSObject {
             let request = try self.context.fetch(request)
             request.forEach { MaskInfo in
                 maskInfoList.append(MaskInfo)
+                if isShouldRenewAreaList && !areaList.contains(MaskInfo.town ?? "no data"){
+                    areaList.append(MaskInfo.town ?? "no data")
+                }
             }
+            isShouldRenewAreaList = false
             maskInfoList.sort { MaskInfo1, MaskInfo2 in
                 return  MaskInfo1.address ?? "" <= MaskInfo2.address ?? ""
             }
+            areaList.sort { String1, String2 in
+                return String1 <= String2
+            }
+            areaList.insert("選擇區域", at: 0)
         }catch{
             fatalError("抓取錯誤:\(error)")
         }
         DispatchQueue.main.async {
             self.vc?.maskInfoTable.reloadData() 
         }
-        
+    }
+    // 刪除資料
+    func deleteMaskInfo(id:String){
+        let request = NSFetchRequest<MaskInfo>(entityName: "MaskInfo")
+        request.predicate = NSPredicate(format: "id == %@", id)
+        do{
+            let results = try context.fetch(request)
+            results.forEach { MaskInfo in
+                context.delete(MaskInfo)
+            }
+            self.searchMaskInfo()
+        }catch{
+            fatalError("抓取錯誤:\(error)")
+        }
     }
     
 }
