@@ -74,7 +74,7 @@ class NetworkController: NSObject {
                     info.updatedate = element.properties.updated
                 })
                 self.app.saveContext()
-                self.searchMaskInfo()
+                self.searchMaskInfo(area: "")
             }
         }
         dataTask?.resume()
@@ -92,11 +92,15 @@ class NetworkController: NSObject {
         }
     }
     // 搜尋資料
-    private func searchMaskInfo(){
+    func searchMaskInfo(area:String){
         maskInfoList.removeAll()
         let request = NSFetchRequest<MaskInfo>(entityName: "MaskInfo")
+        if (area != "") && (area != "選擇區域"){
+            request.predicate = NSPredicate(format: "town == %@", area)
+        }
         do{
             let request = try self.context.fetch(request)
+            
             request.forEach { MaskInfo in
                 maskInfoList.append(MaskInfo)
                 if isShouldRenewAreaList && !areaList.contains(MaskInfo.town ?? "no data"){
@@ -115,7 +119,8 @@ class NetworkController: NSObject {
             fatalError("抓取錯誤:\(error)")
         }
         DispatchQueue.main.async {
-            self.vc?.maskInfoTable.reloadData() 
+            self.vc?.maskInfoTable.reloadData()
+            self.vc?.areaPickerView.reloadAllComponents()
         }
     }
     // 刪除資料
@@ -127,7 +132,7 @@ class NetworkController: NSObject {
             results.forEach { MaskInfo in
                 context.delete(MaskInfo)
             }
-            self.searchMaskInfo()
+            self.searchMaskInfo(area: "")
         }catch{
             fatalError("抓取錯誤:\(error)")
         }

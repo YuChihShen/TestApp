@@ -153,14 +153,12 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
                                     <action selector="areaPickerBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kxg-AT-tvG"/>
-                                    <segue destination="TSZ-VE-UdQ" kind="popoverPresentation" popoverAnchorView="eax-UY-jkG" id="uiQ-JI-Shb">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gBp-eq-9MB" secondAttribute="trailing" id="60G-mc-Reb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iVt-pa-wNU" secondAttribute="trailing" id="6Zk-xu-lWv"/>
@@ -183,6 +181,9 @@
                             <constraint firstItem="tw2-VI-ECe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uP0-3u-SKO"/>
                             <constraint firstItem="iVt-pa-wNU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x5t-93-Dok"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jhv-QC-h8G" appends="YES" id="Dvt-aN-Kgx"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="areaPickerBtn" destination="eax-UY-jkG" id="ck2-AK-TV9"/>
@@ -192,25 +193,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jhv-QC-h8G">
+                    <connections>
+                        <action selector="tapScreen:" destination="BYZ-38-t0r" id="qf5-hQ-GWR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="otq-5w-E8A">
-            <objects>
-                <viewController id="TSZ-VE-UdQ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wwf-ub-V6x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="II5-M1-1Eo"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="400"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n0H-FE-Esn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1013" y="94"/>
         </scene>
     </scenes>
     <resources>
